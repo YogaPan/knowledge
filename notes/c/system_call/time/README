@@ -1,0 +1,28 @@
+1.1 Time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Function Prototypes:
+
+        #include <time.h>
+
+        int clock_getres(clockid_t clk_id, struct timespec *res);
+        int clock_gettime(clockid_t clk_id, struct timespec *tp);
+        int clock_settime(clockid_t clk_id, const struct timespec *tp);
+
+timespec structure:
+
+        struct timespec {
+              time_t   tv_sec;        /* seconds */
+              long     tv_nsec;       /* nanoseconds */
+        };
+
+Basic usage:
+
+        int sec;
+        struct timespec start, end;
+
+        clock_gettime(CLOCK_REALTIME, &start);
+        /* Do something */
+        clock_gettime(CLOCK_REALTIME, &end);
+
+        sec = end.tv_sec - start.tv_sec;

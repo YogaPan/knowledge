@@ -1,0 +1,7 @@
+Before you use libncurses, you have to install:
+
+    sudo apt-get install libncurses5-dev
+
+To use this library, just:
+
+    #include <ncurses.h>

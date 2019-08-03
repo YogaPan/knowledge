@@ -1,0 +1,53 @@
+1.1 Basic thread
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Import Thread:
+
+        from threading import Thread
+
+Create a new thread:
+
+        t = Thread(target=func, args=(args))
+        t.Daemon = True
+        t.start()
+        t.join()
+
+1.2 Queue
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Import Queue:
+
+        from queue import Queue
+
+Create a queue:
+
+        q = Queue(maxsize=0)
+
+put an item into the queue:
+
+        q.put(item, block=True, timeout=None)
+
+Remove and return an item from the queue:
+
+        q.get(block=True, timeout=None)
+
+For each get() used to fetch a task, a subsequent call to task_done()
+tells the queue that the processing on the task is complete.
+
+        q.task_done()
+
+Blocks until all items in the Queue have been gotten and processed.
+
+        q.join()
+
+Return True if the queue is empty:
+
+        q.empty()
+
+Return True if the queue is full:
+
+        q.full()
+
+
+1.3 Thread pool
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

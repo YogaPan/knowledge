@@ -1,0 +1,111 @@
+1.1 environment variables
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Include library:
+
+	#include <unistd.h>
+
+Function prototype:
+
+	pid_t getpid(void);
+	uid_t getuid(void);
+	gid_t getgid(void);
+
+Example:
+
+	pid_t pid = getpid();
+	printf("My pid is: %d\n", pid);
+
+Get system env:
+
+	extern char **environ;
+	for(i = 0; environ[i] != NULL; i++)
+		printf("%s\n", environ[i]);
+
+Go to sleep for 3 seconds:
+
+	sleep(3);
+
+
+1.2 fork and wait
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Include library:
+
+	#include <unistd.h>
+	#include <sys/wait.h>
+
+Declare variable:
+
+	pid_t pid;
+	int status;
+
+Call fork function, return a pid.  When errro occured, fork return -1,
+If pid equals 0, it means you are in the chind process.
+If pid greater then 0, the pid is the process id of the chind process.
+
+	pid = fork();
+
+	if (pid == -1) {
+		/* Failed to create child process. */
+	} else if (pid == 0) {
+		/* In the child process. */
+	} else {
+		/* In the parant process. */
+		/* pid is child's pid */
+	}
+
+The wait() system call suspends execution of the calling process until
+one of its children terminates. Wait return child's pid, If error occured, return -1;
+
+	pid = wait(&status);
+	if (pid == -1)
+		perror("wait")
+
+
+1.2 exec
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Function Prototypes:
+
+	int execl(const char *path, const char *arg, ...);
+	int execlp(const char *file, const char *arg, ...);
+	int execle(const char *path, const char *arg, ..., char * const envp[]);
+	int execv(const char *path, char *const argv[]);
+	int execvp(const char *file, char *const argv[]);
+	int execve(const char *filename, char *const argv[], char *const envp[]);
+
+Above functions all implemented by execve().
+
+Example usage:
+
+	execl("bin/ls", "ls", "-l", NULL); /* "ls" is the first argv */
+	printf("This will not print if exec success.");
+
+"p" means you can execute your programs which in $PATH variable:
+
+	execlp("ls", "ls", "-l", "-a", NULL);
+
+no "l" means you have to provide an array:
+
+	char *argv[] = { "ls", "-l", NULL };
+	execvp("ls", argv);
+
+"e" means pass environment varialble to exec process:
+
+	char * const envp[] = { "AA=11", "BB=22", NULL };
+	execle("./hello", "hello", NULL, envp);
+
+
+1.3 Combine exec and fork
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.4 Link
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- https://www.byvoid.com/blog/linux-c-1
+- http://www.cnblogs.com/mickole/p/3186441.html
+- http://www.cnblogs.com/mickole/p/3187409.html
+- http://www.cnblogs.com/mickole/p/3188321.html
+- https://www.ptt.cc/bbs/b97902HW/M.1268932130.A.0CF.html
+- https://www.ptt.cc/bbs/b97902HW/M.1268953601.A.BA9.html

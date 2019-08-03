@@ -1,0 +1,117 @@
+1.1 Open File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Include library:
+
+	#include <stdio.h>
+
+Declare FILE pointer:
+
+	FILE *fp;
+
+Open a file a return a FILE pointer:
+
+	fp = fopen("filename", "w");
+
+Open mode:
+
+	"r": Read only.
+	"w": write only. If file exists it will truncate the file.
+	"a": Append to the tail of the file.
+	"r+": Read and Write.
+	"w+": Read and Write. If file exists ti will truncate the file.
+
+Close file:
+
+	fclose(fp);
+
+
+1.2 Read and Write
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write to file:
+
+	fprintf(fp, "My name is %s\n", name);
+	fputs(name, fp);
+	fputc('y', fp);
+
+Read from file:
+
+	fscanf(fp, "%s", name);
+	fgets(name, 30, fp);
+	ch = fgetc(fp);
+
+fgets will read whole line from file, and it can set max charactor you want to
+read. For example, I set buffer size to 30, This will prevent buffer overflow.
+
+But this function will read '\r' and '\n' also. So you can use the function
+below to delete these charactors:
+
+	buffer[strcspn(buffer, "\r\n")] = '\0';
+
+When fgets reach End-Of-File, it will retrun NULL pointer.
+
+fgetc read only one charactor in once, When fgetc read End-Of-FILE, it will
+return EOF.
+
+fscanf return EOF when reach End-Of-File, too.
+
+Before file close, the data might not be writed to file.
+If you want to write to file immediately before file close, you can use:
+
+	fflush(fp);
+
+
+1.3 fseek and rewind
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Set the file position to the beginning of the file:
+
+	rewind(fp);
+	fseek(fp, 0, SEEK_SET);
+
+Move foreward 3 charactor:
+
+	fseek(fp, 3, SEEK_CUR);
+
+Set the file position to the end of the file:
+
+	fseek(fp, 0, SEEK_END);
+
+fseek options:
+
+	SEEK_SET: Count from the beginning of the file.
+	SEEK_CUR: Count from current position.
+	SEEK_END: Count from the end of the file.
+
+
+1.4 Console
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Three file streams is opened default:
+
+	stdin:  Standard input.
+	stdout: Standard output.
+	stderr: Standard error.
+
+stderr always print to console. For example, you can use fprintf output
+to console, even standard output is redirected:
+
+	fprintf(stderr, "Hi, I will not go into abc.txt.");
+	$ ./stderr_example > abc.txt
+
+will print to console.
+
+stdout and stderr is line buffered, it means it will not print to console before
+meet '\n' charactor. if you want to print message immediately, use fflush:
+
+	fprintf(stdout, "I don't have new line charactor...");
+	fflush(stdout);
+	sleep(3)
+
+If no fflush, program will print nothing to console before wake up.
+
+1.5 tutorial video
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- https://www.youtube.com/watch?v=QOD2hHiHpn0

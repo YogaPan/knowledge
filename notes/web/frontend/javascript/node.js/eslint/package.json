@@ -1,0 +1,48 @@
+{
+  "name": "eslint-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint ."
+  },
+  "author": "YogaPan",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.1.1",
+    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-react": "^5.2.2",
+    "eslint-plugin-standard": "^2.0.0"
+  },
+  "eslintConfig": {
+    "plugins": [
+      "react"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "sourceType": "module"
+    },
+    "rules": {
+      "yoda": 0,
+      "semi": [
+        2,
+        "always"
+      ],
+      "no-unused-vars": 2,
+      "no-extra-semi": 2,
+      "semi-spacing": [
+        2,
+        {
+          "before": false,
+          "after": true
+        }
+      ],
+      "react/jsx-uses-react": 1,
+      "react/jsx-uses-vars": 1
+    }
+  }
+}

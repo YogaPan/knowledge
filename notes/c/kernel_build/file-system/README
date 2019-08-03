@@ -1,0 +1,4 @@
+LINK:
+- http://lxr.free-electrons.com/source/fs/filesystems.c
+- https://github.com/krinkinmu/aufs
+- http://kukuruku.co/hub/nix/writing-a-file-system-in-linux-kernel

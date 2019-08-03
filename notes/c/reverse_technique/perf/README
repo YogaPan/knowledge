@@ -1,0 +1,23 @@
+1.1 Install
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Install perf:
+
+        $ sudo apt-get install linux-tools-common
+        $ sudo apt-get install linux-tools-`uname -r` linux-cloud-tools-`uname -r`
+
+Basic usage:
+
+        $ sudo perf top
+        $ sudo perf top -p $pid
+
+
+1.2 Link
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- http://wiki.csie.ncku.edu.tw/embedded/perf-tutorial
+- https://www.ibm.com/developerworks/cn/linux/l-cn-perf1/
+- http://www.brendangregg.com/linuxperf.html
+- http://blog.csdn.net/trochiluses/article/details/17346803
+- http://kernel.taobao.org/index.php?title=Documents/Perf_FAQ
+

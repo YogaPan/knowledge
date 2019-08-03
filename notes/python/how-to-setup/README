@@ -1,0 +1,50 @@
+1.1 Setup.py
+~~~~~~~~~~~~~~~~~~~~
+
+Project structure:
+
+        my_app
+        ├── setup.py
+        ├── setup.cfg
+        ├── runner
+        ├── pkgA
+        │   ├── __init__.py
+        │   ├── modA_1.py
+        │   └── modA_2.py
+        └── pkgB
+            ├── __init__.py
+            └── modA_2.py
+
+Write setup.py:
+
+        from distutils.core import setup
+
+        setup(
+            name='myproject',
+            packages=['pkgA', 'pkgB'],
+            scripts=['runner'],
+            version='1.0',
+            description='My project',
+            author='YogaPan',
+            author_email= godhand1234567@gmail.com',
+            url='https://github.com/dokelung/MyProject',
+            download_url= https://github.com/yogapan/myproject/tarball/v1.0',
+            keywords=['Good Project'],
+            classifiers = [],
+        )
+
+
+1.2 Register to pypi
+~~~~~~~~~~~~~~~~~~~~
+
+Pypi page: https://pypi.python.org/pypi
+
+Register and upload to pypi:
+
+        $ python setup.py register -r pypi
+        $ python setup.py sdist upload -r pypi
+
+1.3 Link
+~~~~~~~~~~~~~~~~~~~~~
+
+- http://dokelung-blog.logdown.com/posts/238050-collation-and-publishing-of-the-project-from-github-to-pypi

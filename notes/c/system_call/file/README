@@ -1,0 +1,110 @@
+1.1 Open and close file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Include library:
+
+	#include <unistd.h>
+	#include <fcntl.h>
+
+Open a file:
+
+	int fd;
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH );
+	fd = creat(filename, 0755);
+
+creat(path, mode) is the same as open(path, O_CREAT | O_TRUNC | O_WRONLY, mode)
+
+        fd = creat(filename, 0755);
+
+Flags:
+
+        O_RDONLY    /* Read only */
+        O_WRONLY    /* Write only */
+        O_RDWR      /* Read and Write */
+
+        O_CREAT     /* If not exists, then create file */
+        O_APPEND    /* Append */
+        O_TRUNC     /* If file existed, then replace this file. */
+
+        /* mode macros */
+        S_ISUID     /* 04000 */
+        S_ISGID     /* 02000 */
+        S_ISVTX     /* 01000 sticky */
+
+        S_IRWXU     /* 00700 */
+            S_IRUSR /* 00400 */
+            S_IWUSR /* 00200 */
+            S_IXUSR /* 00100 */
+
+        S_IRWXG     /* 00070 */
+            S_IRGRP /* 00040 */
+            S_IWGRP /* 00020 */
+            S_IXGRP /* 00010 */
+
+        S_IRWXO     /* 00007 */
+            S_IROTH /* 00004 */
+            S_IWOTH /* 00002 */
+            S_IXOTH /* 00001 */
+
+Close file:
+
+	close(fd);
+
+
+1.2 Read and write to file descriptor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.3 Directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Include library:
+
+	#include <unistd.h>
+
+Function prototypes:
+
+	char * getcwd(char *buf, size_t size);
+	int rmdir(const char *pathname);
+	int chdir(const char *path);
+	int fchdir(int fildes);
+
+Usage example:
+
+	cwd_fd = open('.', O_RDONLY);
+	chdir("the other directory");
+	fchdir(cwd_fd);
+	close(cwd_fd);
+
+Create direct:
+
+        #include <sys/stat.h>
+        int mkdir(const char *pathname, mode_t mode);
+
+Include library:
+
+	#include <dirent.h>
+
+direnct structure:
+
+	struct dirent {
+		ino_t d_ino;
+		char d_name[255+1];
+	}
+
+Function Prototypes:
+
+	DIR * opendir(const char *filename);
+	struct dirent * readdir(DIR *dirp);
+	int closedir(DIR *dirp);
+
+Usage example:
+
+	DIR *dir;
+	struct dirent *entry;
+
+	dir = opendir('path');
+	if (dir) {
+		while ((entry = readdir(dir)) != NULL)
+			printf("%s\n", entry->d_name);
+		closedir(dir);
+	}
