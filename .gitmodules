@@ -1,0 +1,3 @@
+[submodule "side-project/web-calculator"]
+	path = side-project/web-calculator
+	url = https://github.com/YogaPan/web-calculator
