@@ -1,3 +1,6 @@
 [submodule "side-project/web-calculator"]
 	path = side-project/web-calculator
 	url = https://github.com/YogaPan/web-calculator
+[submodule "dotfiles"]
+	path = dotfiles
+	url = https://github.com/YogaPan/dotfiles
