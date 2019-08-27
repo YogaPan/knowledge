@@ -4,3 +4,6 @@
 [submodule "dotfiles"]
 	path = dotfiles
 	url = https://github.com/YogaPan/dotfiles
+[submodule "blog"]
+	path = blog
+	url = https://github.com/YogaPan/blog
