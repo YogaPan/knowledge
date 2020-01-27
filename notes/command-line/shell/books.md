@@ -7,6 +7,7 @@
 - [The Unix Shell's Humble If](https://thoughtbot.com/blog/the-unix-shells-humble-if#syntax)
 - [Input/Output Redirection in the Shell](https://thoughtbot.com/blog/input-output-redirection-in-the-shell)
 - [Shell 扩展-参数扩展(Shell Parameter Expansion) - 知乎](https://zhuanlan.zhihu.com/p/65599187)
+- [Shell Parameter Expansion 参数展开](http://xstarcd.github.io/wiki/shell/ShellParameterExpansion.html)
 
 ## Tools
 

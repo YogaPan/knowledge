@@ -11,3 +11,8 @@ TODO: Add Link
 - Demon Eyes
 - ping-wei collector
 - Vue RWD website
+
+## nHentai Downloader 參考資料
+
+- [RicterZ/nhentai: nhentai doujinshi downloader](https://github.com/RicterZ/nhentai)
+- [nhder - npm](https://www.npmjs.com/package/nhder)
